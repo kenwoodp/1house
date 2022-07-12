@@ -1,0 +1,333 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// After declaring font faces below, add them to the tailwind.config.js file under fontFamily to use them via Tailwind utility classes
+
+// TODO: Update font to brand font
+@font-face {
+  font-family: "Opinion Pro Condensed ExtraBold";
+  src: url("../public/fonts/Opinion-Pro-Condensed-ExtraBold.otf");
+  font-display: swap; // Don't forget this bit, should make fonts load better!
+}
+
+@font-face {
+  font-family: "Avenir Medium";
+  src: url("../public/fonts/Avenir-65-Medium.woff2") format("woff2"),
+    url("../public/fonts/Avenir-65-Medium.woff") format("woff");
+  font-display: swap; // Don't forget this bit, should make fonts load better!
+}
+
+//WOFF2 Example
+// @font-face {
+//   font-family: 'Avenir Medium';
+//   src: url("../public/fonts/Avenir-65-Medium.woff2") format("woff2"),
+//        url("../public/fonts/Avenir-65-Medium.woff") format("woff");
+//   font-display: swap; // Don't forget this bit, should make fonts load better!
+// }
+
+@layer utilities {
+  @variants responsive {
+    .page-width {
+      @apply w-full max-w-page-width mx-auto;
+    }
+
+    .placeholder-uppercase::placeholder {
+      text-transform: uppercase;
+    }
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+
+  @apply font-body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-heading uppercase text-primary;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+h6 {
+  @apply text-base;
+}
+
+body,
+#__next,
+#__next > div,
+.root {
+  height: 100%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  @apply mb-20;
+}
+
+.container-copy-narrow, 
+.container-copy-narrow--center {
+  @apply my-10 px-5 w-full max-w-page-width mx-auto space-y-5;
+  max-width: 800px;
+
+  p {
+    @apply leading-7;
+  }
+
+  li:not(:last-child) {
+    @apply mb-2;
+  }
+
+  a {
+    @apply font-bold hover:underline;
+  }
+
+  ol {
+    list-style: lower-latin inside;
+  }
+
+
+}
+
+.container-copy-narrow {
+  @apply text-left;
+}
+
+.container-copy-narrow--center {
+  @apply text-center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+table {
+  @apply w-full leading-6 text-base;
+}
+
+th {
+  @apply font-heading text-lg;
+  padding-bottom: 0.625rem;
+}
+
+td {
+  @apply w-full leading-6 align-top;
+  padding: 0.625rem 0.625rem 0.625rem 0;
+}
+
+li {
+  @apply my-8;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+.hide-on-desktop {
+  display: initial;
+}
+
+select {
+  text-transform: uppercase;
+  @apply font-heading;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background-size: 18px 18px;
+  background-image: url("/icons/chevron_down_icon.svg");
+  background-repeat: no-repeat;
+  background-position: right 7px center;
+  padding-right: 32px !important;
+}
+
+select:active {
+  text-transform: none;
+}
+
+button {
+  @apply font-heading
+          uppercase
+          text-base
+          text-white
+          border-solid
+          border-2
+          border-primary
+          bg-primary
+          py-4
+          px-8
+          hover:bg-white
+          hover:text-primary;
+}
+
+button[disabled] {
+  @apply bg-gray-400
+          border-gray-400
+          hover:border-gray-400
+          text-white
+          pointer-events-none;
+}
+
+.styled-paragraph-container {
+  h2 {
+    @apply text-vb-black text-2xl mb-8;
+  }
+
+  p {
+    @apply text-base leading-8;
+  }
+
+  li:not(:last-child) {
+    @apply mb-2;
+  }
+
+  a {
+    @apply font-bold hover:underline;
+  }
+
+  ol {
+    list-style: lower-latin inside;
+  }
+}
+
+input, select {
+  border-radius: 0;
+}
+
+// Custom Checkbox!
+
+/* Customize the label (the container) */
+.checkbox-container {
+  display: flex;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+// /* On mouse-over, add a background color */
+.checkbox-container:hover input ~ .checkmark {
+
+}
+
+/* When the checkbox is checked, add a background */
+.checkbox-container input:checked ~ .checkmark {
+  @apply bg-primary;
+  border: 3px solid white;
+
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block; 
+  content: "";
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkbox-container input.has-error ~ .checkmark {
+
+}
+
+@media only screen and (min-width: 768px) {
+  body,
+  #__next,
+  #__next > div,
+  .root {
+    font-size: 1.25rem;
+  }
+
+  .hide-on-mobile {
+    display: initial;
+  }
+
+  .hide-on-desktop {
+    display: none;
+  }
+}
