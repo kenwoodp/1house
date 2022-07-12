@@ -1,0 +1,32 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .header {
+        font-size: 2em;
+        font-weight: normal;
+    }
+
+    .formArea {
+        text-align: center;
+        width: 80%;
+        background-color: rgb(187, 187, 187);
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+    .details {
+        margin: 10px 0;
+
+        .inputField {
+            border-radius: 5px;
+        }
+    }
+
+    .submitBtn {
+        margin-bottom: 10px;
+    }
+}
+
